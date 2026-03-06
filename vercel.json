@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/users/admin/simple-test",
+      "destination": "/api/users/admin/simple-test"
+    },
+    {
+      "source": "/api/users/admin/register",
+      "destination": "/api/users/admin/register"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
