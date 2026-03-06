@@ -1,72 +1,17 @@
 const fs = require('fs');
 const path = require('path');
 const PDFDocument = require('pdfkit');
-const { createCanvas } = require('canvas');
-const { Chart, registerables } = require('chart.js');
-Chart.register(...registerables);
+// const { createCanvas } = require('canvas');
+// const { Chart, registerables } = require('chart.js');
+// Chart.register(...registerables);
 const Evaluation = require('../models/Evaluation');
 const StudentSubmission = require('../models/StudentSubmission');
 const Criteria = require('../models/Criteria');
 
-// Helper function to generate a bar chart
+// Helper function to generate a bar chart (simplified without canvas)
 async function generateBarChart(labels, data, title) {
-    const width = 600;
-    const height = 400;
-    const canvas = createCanvas(width, height);
-    const ctx = canvas.getContext('2d');
-
-    // Create gradient for the chart
-    const gradient = ctx.createLinearGradient(0, 0, 0, height);
-    gradient.addColorStop(0, 'rgba(54, 162, 235, 0.7)');
-    gradient.addColorStop(1, 'rgba(75, 192, 192, 0.7)');
-
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: title,
-                data: data,
-                backgroundColor: gradient,
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1,
-                borderRadius: 5,
-                borderSkipped: false,
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: title,
-                    font: {
-                        size: 16
-                    }
-                },
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 100,
-                    title: {
-                        display: true,
-                        text: 'Marks (%)'
-                    }
-                },
-                x: {
-                    grid: {
-                        display: false
-                    }
-                }
-            }
-        }
-    });
-
-    return canvas.toBuffer('image/png');
+    // Return a placeholder buffer - charts will be added as text tables instead
+    return Buffer.from('chart-placeholder');
 }
 
 // Helper function to add a header to each page
